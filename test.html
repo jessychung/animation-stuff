@@ -29,6 +29,10 @@
     document.body.appendChild( renderer.domElement );
 
     var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+    var geo = new THREE.EdgesGeometry( geometry );
+    var mat = new THREE.LineBasicMaterial( { color: 0xb3b3b3, linewidth: 2 } );
+    var wireframe = new THREE.LineSegments( geo, mat );
+
     var material = new THREE.MeshBasicMaterial({
         color: 0xb3b3b3,
         wireframe: true
@@ -36,17 +40,24 @@
 
     var cube = new THREE.Mesh( geometry, material );
 
-    scene.add( cube );
+    scene.add( wireframe );
 
-    camera.position.z = 5;
+    camera.position.z = 3;
+
+//    for ( var i = 0; i < 10; i ++ ) {
+//        var mesh = new THREE.Mesh( loadedMesh.geometry, loadedMesh.material );
+//        mesh.position.set( i * 100, 0, 0 );
+//        scene.add( mesh );
+//    }
 
     var render = function () {
         requestAnimationFrame( render );
 
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
+        wireframe.rotation.x += 0.01;
+        wireframe.rotation.y += 0.01;
 
         renderer.setClearColor( 0xf2f2f2 );
+
         renderer.render(scene, camera);
     };
 
