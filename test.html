@@ -42,6 +42,13 @@
 
     scene.add( wireframe );
 
+    var newWireframe = wireframe.clone();
+    var newWireframe = new THREE.LineSegments( geo, mat );
+
+    scene.add( newWireframe );
+
+    newWireframe.position.set(2,5,5);
+
     camera.position.z = 3;
 
 //    for ( var i = 0; i < 10; i ++ ) {
