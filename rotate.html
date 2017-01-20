@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.js"></script>
+<script src="Projector.js"></script>
+<script src="CanvasRenderer.js"></script>
+<script>
+    // Globals
+    var camera, scene, renderer;
+    var refObj, looker;
+    var origin = new THREE.Vector3();
+
+
+    /**
+     * Looks at and orients an object. This is what I'm trying to figure out.
+     */
+    function lookAtAndOrient(
+        objectToAdjust,
+        pointToLookAt,
+        pointToOrientXTowards) {
+        // First we look at the pointToLookAt
+
+        // set the object's up vector
+        var v1 = pointToOrientXTowards.position.clone().sub( objectToAdjust.position ).normalize(); // CHANGED
+        var v2 = pointToLookAt.clone().sub( objectToAdjust.position ).normalize(); // CHANGED
+        var v3 = new THREE.Vector3().crossVectors( v1, v2 ).normalize(); // CHANGED
+        objectToAdjust.up.copy( v3 ); // CHANGED
+
+
+        objectToAdjust.lookAt(pointToLookAt);
+
+        // QUESTION HERE:
+        // Now, we need to rotate the object around its local Z axis such that its X axis
+        // lies on the plane defined by objectToAdjust.position, pointToLookAt and pointToOrientXTowards
+
+
+        // objectToAdjust.rotation.z = ??;
+    }
+
+    /**
+     * Sets up the example problem.
+     */
+    function setupProblem() {
+        // This is the reference object that we want to orientate our looker to
+        refObj = new THREE.Mesh(
+            new THREE.SphereGeometry(1, 10, 10),
+            new THREE.MeshNormalMaterial());
+        scene.add(refObj);
+
+        refObj.position.x = 50 * ( Math.random() - 0.5 ); // CHANGED;
+        refObj.position.y = 66 * ( Math.random() - 0.5 ); // CHANGED;
+        refObj.position.z = 40 * ( Math.random() - 0.5 ); // CHANGED;
+
+        // This is the object whose Z-axis needs to point at the origin, and whose X
+        // axis needs to point at refObj
+        looker = new THREE.AxisHelper(5);
+        scene.add(looker);
+
+        looker.material.linewidth = 3;
+
+        looker.position.x = 10;
+        looker.position.y = 25;
+        looker.position.z = 30;
+
+        // Illustrate the relationship between the three points (origin, ref and looker), showing the plane
+        // created by them.
+        var refPlane = new THREE.Geometry();
+        refPlane.vertices.push(origin);
+        refPlane.vertices.push(looker.position);
+        refPlane.vertices.push(refObj.position);
+        refPlane.faces.push(new THREE.Face3(0, 1, 2));
+        refPlane.faces.push(new THREE.Face3(2, 1, 0));
+
+        var refPlaneMesh = new THREE.Mesh(
+            refPlane,
+            new THREE.MeshBasicMaterial({
+                color: 0xCCCCCC
+            }));
+        scene.add(refPlaneMesh);
+
+        // This function should cause the looker to look at the origin and orient its X axis towards
+        // refObj.
+        lookAtAndOrient(looker, origin, refObj);
+    }
+
+    init();
+    animate();
+
+    function init() {
+        camera = new THREE.PerspectiveCamera(75, $(document).width() / $(document).height(), 1, 10000);
+        camera.position.z = 50;
+        camera.position.x = 50;
+        camera.position.y = 50;
+        camera.lookAt(origin)
+
+        scene = new THREE.Scene();
+
+        var axisHelper = new THREE.AxisHelper(100);
+        scene.add(axisHelper)
+
+        renderer = new THREE.WebGLRenderer();
+        renderer.setSize($(document).width(), $(document).height());
+
+        document.body.appendChild(renderer.domElement);
+
+        $(document).click(function () {
+            rotateCamera = !rotateCamera;
+        });
+
+        setupProblem();
+    }
+
+    var theta = Math.PI / 3.5;
+    var radiansPerSecond = Math.PI / 10;
+    var rotateCamera = true;
+
+    function updateScene(frameDurationSeconds) {
+        // Rotate the camera
+        if (rotateCamera) {
+            theta += radiansPerSecond * frameDurationSeconds;
+        }
+        camera.position.x = 50 * Math.cos(theta);
+        camera.position.z = 50 * Math.sin(theta);
+
+        camera.lookAt(origin);
+
+        //looker.rotation.z += Math.PI/100;
+    }
+
+
+    var lastUpdate = now();
+
+    function animate() {
+        updateScene((now() - lastUpdate) / 1000.0);
+        lastUpdate = now();
+
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
+
+    function now() {
+        return new Date().getTime();
+    }
+</script>
+</body>
+</html>
