@@ -1,0 +1,42 @@
+$light: 200;
+$book: 300;
+$regular: 400;
+$bold: 700;
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.main-title {
+  width: 100%;
+  height: 100%;
+  left:0;
+  top:0;
+  z-index: 100;
+  padding-left: 55px;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  #particles-js {
+    background-color: #032035;
+    height: 100%;
+    .container {
+      position: absolute;
+    }
+    h1 {
+      color: #fff;
+      font-family: "mr-eaves-modern",sans-serif;
+      font-weight: $regular;
+      font-size: 32px;
+    }
+  }
+}
+
+
