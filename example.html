@@ -1,29 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>three.js canvas - lines - sphere</title>
+    <title>Thentia</title>
     <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <style>
-        body {
-            background-color: #fff;
-            margin: 0px;
-            overflow: hidden;
-        }
-        html, body {
-            font-family: 'Open Sans', sans-serif;
-        }
-        a {
-            color:#0078ff;
-        }
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/example.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500|Roboto:300,400,500,700" rel="stylesheet">
+    <!--typekit-->
+    <script src="https://use.typekit.net/hzj8pcp.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
 </head>
 <body>
-<h1 style="position: absolute; font-weight: 300; font-size: 40px; color: #fff;top: 50%;
-  left: 50%; margin: 0;
-  transform: translate(-50%, -50%); max-width: 700px; text-align: center">Thentia is a product company that is pushing technological boundaries & driving global innovation.</h1>
 
+<div class="main-menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="images/thentia-white.png" class="thentia-logo-w" width="150px">
+            </div>
+            <div class="col-md-9" style="text-align: right">
+               <ul>
+                   <a href="#">
+                       <li>About</li>
+                   </a>
+                   <a href="#">
+                       <li>Contact</li>
+                   </a>
+               </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-title" id="main">
+    <div id="particles">
+
+        <div class="main-title-text container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
+                    <h1>Pushing technological boundaries & driving global innovation.</h1>
+                    <div>
+                        <a class="btn-brand">Learn More</a>
+                        <a class="btn-light">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="second">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p>We are creating an ecosystem where your employees do not have to rely on passwords to safeguard critical data and where your IT department can focus on driving your organization forward.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.js"></script>
 <script src="Projector.js"></script>
@@ -31,6 +68,7 @@
 
 
 <script>
+
     var SCREEN_WIDTH = window.innerWidth,
         SCREEN_HEIGHT = window.innerHeight,
         mouseX = 0, mouseY = 0,
@@ -45,14 +83,14 @@
     function init() {
         var container, separation = 100, amountX = 50, amountY = 50,
             particles, particle;
-        container = document.createElement('div');
-        document.body.appendChild(container);
+        container = document.getElementById( 'particles' );
+        document.getElementById( 'main' ).appendChild(container);
         camera = new THREE.PerspectiveCamera( 55, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
         camera.position.z = 1000;
         scene = new THREE.Scene();
 
-        renderer = new THREE.CanvasRenderer();
-        renderer.setClearColor( 0x000000 );
+        renderer = new THREE.CanvasRenderer({ alpha: true });
+        renderer.setClearColor( 0xffffff, 0);
         renderer.setPixelRatio( window.devicePixelRatio );
         renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
         container.appendChild( renderer.domElement );
@@ -81,16 +119,16 @@
         // lines
 
 
-        for (var i = 0; i < 500; i++) {
+        for (var i = 0; i < 1000; i++) {
             var geometry = new THREE.Geometry();
             var vertex = new THREE.Vector3( Math.random() * 2 - 1, Math.random() * 2 - 1, Math.random() * 2 - 1 );
             vertex.normalize();
-            vertex.multiplyScalar( 650 );
+            vertex.multiplyScalar( 750 );
             geometry.vertices.push( vertex );
             var vertex2 = vertex.clone();
-            vertex2.multiplyScalar( Math.random() * 0.09 + 1 );
+            vertex2.multiplyScalar( Math.random() * 0.2 + 1 );
             geometry.vertices.push( vertex2 );
-            var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: Math.random()*0xFFFFFF, opacity: Math.random(), linewidth:3 } ) );
+            var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: Math.random()*0xFFFFFF, opacity: Math.random(), linewidth: 1 } ) );
             scene.add( line );
         }
         group = new THREE.Object3D();
@@ -140,8 +178,6 @@
         camera.position.x += ( - mouseY - camera.position.x );
         camera.lookAt( scene.position );
         renderer.render( scene, camera );
-
-
     }
 </script>
 </body>
