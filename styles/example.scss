@@ -1,7 +1,12 @@
-$light: 200;
-$book: 300;
+$light: 300;
 $regular: 400;
+$medium: 500;
 $bold: 700;
+
+$thentia-blue: #004f76;
+$thentia-green: #4cb79c;
+$thentia-yellow: #eeaf30;
+$thentia-red: #ea573d;
 
 html,
 body {
@@ -12,10 +17,18 @@ body {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Rubik', sans-serif;
 }
 
 canvas {
   height: 100% !important;
+}
+
+.button {
+  padding: 12px 25px;
+  margin: 0 7px;
+  font-size: 17px;
+  font-weight: $regular;
 }
 
 .main-menu {
@@ -32,7 +45,6 @@ canvas {
     a {
       margin: 0 10px;
       color: #fff;
-      font-family: "roboto",sans-serif;
       font-weight: $regular;
     }
     li {
@@ -60,11 +72,11 @@ canvas {
       h1 {
         color: #fff;
         font-family: "mr-eaves-modern",sans-serif;
-        font-weight: 400;
+        font-weight: $regular;
         font-size: 51px;
         margin-top: 0px;
         pointer-events: none;
-        margin-bottom: 20px;
+        margin-bottom: 50px;
       }
       p {
         font-family: "roboto",sans-serif;
@@ -75,14 +87,13 @@ canvas {
         margin: 0 auto;
       }
       .btn-brand {
-        background-color: #4cb79c;
-        padding: 10px 15px;
+        background-color: $thentia-green;
+        border: 2px solid $thentia-green;
         color: #fff;
       }
       .btn-light {
-        border: 1px solid #4cb79c;
-        padding: 10px 15px;
-        color: #fff;
+        border: 2px solid $thentia-green;
+        color: $thentia-green;
       }
     }
 
@@ -90,7 +101,11 @@ canvas {
 }
 
 .second {
-  background-color: #f2f2f2;
-  padding: 60px 0;
+  //background-color: $thentia-green;
+  background: linear-gradient(to right, $thentia-green, $thentia-blue);
+  color: #fff;
+  padding: 100px 0;
 }
+
+
 

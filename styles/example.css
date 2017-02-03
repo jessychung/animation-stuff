@@ -5,10 +5,17 @@ body {
 
 body {
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Rubik', sans-serif; }
 
 canvas {
   height: 100% !important; }
+
+.button {
+  padding: 12px 25px;
+  margin: 0 7px;
+  font-size: 17px;
+  font-weight: 400; }
 
 .main-menu {
   position: absolute;
@@ -24,7 +31,6 @@ canvas {
     .main-menu ul a {
       margin: 0 10px;
       color: #fff;
-      font-family: "roboto",sans-serif;
       font-weight: 400; }
     .main-menu ul li {
       display: inline-block; }
@@ -52,7 +58,7 @@ canvas {
         font-size: 51px;
         margin-top: 0px;
         pointer-events: none;
-        margin-bottom: 20px; }
+        margin-bottom: 50px; }
       .main-title #particles .main-title-text p {
         font-family: "roboto",sans-serif;
         font-size: 16px;
@@ -62,13 +68,13 @@ canvas {
         margin: 0 auto; }
       .main-title #particles .main-title-text .btn-brand {
         background-color: #4cb79c;
-        padding: 10px 15px;
+        border: 2px solid #4cb79c;
         color: #fff; }
       .main-title #particles .main-title-text .btn-light {
-        border: 1px solid #4cb79c;
-        padding: 10px 15px;
-        color: #fff; }
+        border: 2px solid #4cb79c;
+        color: #4cb79c; }
 
 .second {
-  background-color: #f2f2f2;
-  padding: 60px 0; }
+  background: linear-gradient(to right, #4cb79c, #004f76);
+  color: #fff;
+  padding: 100px 0; }
