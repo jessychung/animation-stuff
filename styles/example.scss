@@ -8,6 +8,12 @@ $thentia-green: #4cb79c;
 $thentia-yellow: #eeaf30;
 $thentia-red: #ea573d;
 
+@mixin hover-state {
+  &:hover, &:active, &:focus {
+    @content;
+  }
+}
+
 html,
 body {
   margin: 0;
@@ -18,10 +24,31 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Rubik', sans-serif;
+  overflow-x: hidden;
 }
+
+//@media only screen and (min-width: 1200px) {
+//  .container {
+//    width: 1050px;
+//  }
+//}
+//
+//@media only screen and (min-width: 992px) {
+//  .container {
+//    width: 870px;
+//  }
+//}
+//
+//@media only screen and (max-width: 768px) {
+//  .container {
+//    width: 620px;
+//  }
+//}
+
 
 canvas {
   height: 100% !important;
+  width: 100% !important;
 }
 
 .button {
@@ -31,13 +58,71 @@ canvas {
   font-weight: $regular;
 }
 
+.side-menu {
+  width: 60px;
+  height:100%;
+  position: fixed;
+  z-index: 1009;
+  background-color: rgba(255, 255, 255, 0.1);
+  right: 0;
+  text-align: center;
+  padding: 23px 0;
+  transition: all .15s;
+  @include hover-state {
+    transition: all .15s;
+    background-color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+    h1 {
+      color: #061927;
+    }
+    .animated-bars div {
+      background-color: #061927;
+    }
+  }
+  .animated-bars {
+    display: inline-block;
+    @include hover-state {
+      cursor: pointer;
+      div:first-child {
+        width: 19px;
+        transition: all .3s;
+      }
+    }
+    div {
+      width: 19px;
+      height: 3px;
+      background-color: #fff;
+      margin: 4px auto;
+    }
+    div:first-child {
+      width: 10px;
+      margin: 0;
+      transition: all .3s;
+    }
+  }
+  h1 {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+  }
+}
+
 .main-menu {
   position: absolute;
   width: 100%;
   z-index: 1001;
-  padding: 20px 0;
+  padding: 55px 0;
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.05);
   ul {
     list-style-type: none;
     margin: 0;
@@ -45,23 +130,31 @@ canvas {
     a {
       margin: 0 10px;
       color: #fff;
-      font-weight: $regular;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: $medium;
+      @include hover-state {
+        text-decoration: none;
+      }
     }
     li {
       display: inline-block;
+      font-size: 13px;
     }
   }
 }
 
 .main-title {
   width: 100%;
-  height: 800px;
+  height: 100%;
   z-index: 100;
   background-size: cover;
   position: relative;
   overflow: hidden;
   #particles {
-    background-color: #061927;
+    //background-color: #061927;
+    background: linear-gradient(to right, #061927, #061927);
     height: 100%;
     .main-title-text {
       position: absolute;
@@ -73,7 +166,7 @@ canvas {
         color: #fff;
         font-family: "mr-eaves-modern",sans-serif;
         font-weight: $regular;
-        font-size: 51px;
+        font-size: 57px;
         margin-top: 0px;
         pointer-events: none;
         margin-bottom: 50px;
