@@ -40,13 +40,11 @@ canvas {
       color: #061927; }
     .side-menu:hover .animated-bars div, .side-menu:active .animated-bars div, .side-menu:focus .animated-bars div {
       background-color: #061927; }
+    .side-menu:hover .animated-bars div:first-child, .side-menu:active .animated-bars div:first-child, .side-menu:focus .animated-bars div:first-child {
+      width: 19px;
+      transition: all .3s; }
   .side-menu .animated-bars {
     display: inline-block; }
-    .side-menu .animated-bars:hover, .side-menu .animated-bars:active, .side-menu .animated-bars:focus {
-      cursor: pointer; }
-      .side-menu .animated-bars:hover div:first-child, .side-menu .animated-bars:active div:first-child, .side-menu .animated-bars:focus div:first-child {
-        width: 19px;
-        transition: all .3s; }
     .side-menu .animated-bars div {
       width: 19px;
       height: 3px;
@@ -130,9 +128,15 @@ canvas {
         background-color: #4cb79c;
         border: 2px solid #4cb79c;
         color: #fff; }
+        .main-title #particles .main-title-text .btn-brand:hover, .main-title #particles .main-title-text .btn-brand:active, .main-title #particles .main-title-text .btn-brand:focus {
+          text-decoration: none;
+          cursor: pointer; }
       .main-title #particles .main-title-text .btn-light {
         border: 2px solid #4cb79c;
         color: #4cb79c; }
+        .main-title #particles .main-title-text .btn-light:hover, .main-title #particles .main-title-text .btn-light:active, .main-title #particles .main-title-text .btn-light:focus {
+          text-decoration: none;
+          cursor: pointer; }
 
 .second {
   background: linear-gradient(to right, #4cb79c, #004f76);

@@ -79,19 +79,18 @@ canvas {
     h1 {
       color: #061927;
     }
-    .animated-bars div {
-      background-color: #061927;
-    }
-  }
-  .animated-bars {
-    display: inline-block;
-    @include hover-state {
-      cursor: pointer;
+    .animated-bars {
+      div {
+        background-color: #061927;
+      }
       div:first-child {
         width: 19px;
         transition: all .3s;
       }
     }
+  }
+  .animated-bars {
+    display: inline-block;
     div {
       width: 19px;
       height: 3px;
@@ -188,10 +187,18 @@ canvas {
         background-color: $thentia-green;
         border: 2px solid $thentia-green;
         color: #fff;
+        @include hover-state {
+          text-decoration: none;
+          cursor: pointer;
+        }
       }
       .btn-light {
         border: 2px solid $thentia-green;
         color: $thentia-green;
+        @include hover-state {
+          text-decoration: none;
+          cursor: pointer;
+        }
       }
     }
 
