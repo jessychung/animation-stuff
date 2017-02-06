@@ -69,7 +69,6 @@ canvas {
   z-index: 1009;
   background-color: rgba(255, 255, 255, 1);
   right: 0;
-  text-align: center;
   padding: 23px 0;
   transition: all .15s;
   @include hover-state {
@@ -87,19 +86,31 @@ canvas {
         width: 19px;
         transition: all .3s;
       }
+      div:nth-child(2) {
+        width: 19px;
+        transition: all .3s;
+      }
     }
   }
   .animated-bars {
     display: inline-block;
+    position: absolute;
+    right: 20px;
     div {
       width: 19px;
       height: 3px;
       background-color: #061927;
       margin: 4px auto;
+      transition: all .3s;
     }
     div:first-child {
-      width: 10px;
+      width: 7px;
       margin: 0;
+      transition: all .3s;
+    }
+    div:nth-child(2) {
+      width: 12px;
+      margin-left: 0;
       transition: all .3s;
     }
   }
@@ -117,6 +128,25 @@ canvas {
     top: 50%;
     left: 0;
     right: 0;
+  }
+}
+
+.full-screen-menu {
+  width: 100%;
+  background-color: #fff !important;
+}
+
+.cross {
+  &:first-child {
+    transform: rotate(45deg);
+    margin-top: 7px !important;
+  }
+  &:nth-child(2) {
+    opacity:0;
+  }
+  &:last-child {
+    transform: rotate(-45deg);
+    margin-top: -14px !important;
   }
 }
 

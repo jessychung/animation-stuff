@@ -15,13 +15,17 @@
 <body>
 
 <div class="side-menu">
-    <div class="animated-bars">
-        <div></div>
-        <div></div>
-        <div></div>
+
+    <div class="full-screen-hide">
+        <div class="animated-bars">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <h1>menu</h1>
     </div>
 
-    <h1>menu</h1>
 
 </div>
 
@@ -86,12 +90,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.js"></script>
 <script src="Projector.js"></script>
 <script src="CanvasRenderer.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 <script>
 
     $('.side-menu').click(function () {
-
+        $(this).toggleClass('full-screen-menu', 3000);
+        $('.animated-bars div').toggleClass('cross');
     });
 
     var SEPARATION = 100, AMOUNTX = 50, AMOUNTY = 50;
