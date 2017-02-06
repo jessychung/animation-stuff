@@ -9,6 +9,9 @@ body {
   font-family: 'Rubik', sans-serif;
   overflow-x: hidden; }
 
+.container {
+  padding-right: 60px; }
+
 canvas {
   height: 100% !important;
   width: 100% !important; }
@@ -24,7 +27,7 @@ canvas {
   height: 100%;
   position: fixed;
   z-index: 1009;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: white;
   right: 0;
   text-align: center;
   padding: 23px 0;
@@ -47,14 +50,14 @@ canvas {
     .side-menu .animated-bars div {
       width: 19px;
       height: 3px;
-      background-color: #fff;
+      background-color: #061927;
       margin: 4px auto; }
     .side-menu .animated-bars div:first-child {
       width: 10px;
       margin: 0;
       transition: all .3s; }
   .side-menu h1 {
-    color: #fff;
+    color: #061927;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 1px;
@@ -97,7 +100,8 @@ canvas {
   z-index: 100;
   background-size: cover;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  padding-right: 60px; }
   .main-title #particles {
     background: linear-gradient(to right, #061927, #061927);
     height: 100%; }
@@ -134,3 +138,6 @@ canvas {
   background: linear-gradient(to right, #4cb79c, #004f76);
   color: #fff;
   padding: 100px 0; }
+
+.footer {
+  padding: 50px 0; }

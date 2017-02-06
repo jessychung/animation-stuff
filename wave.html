@@ -72,6 +72,16 @@
     </div>
 </div>
 
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                Footer Placeholder
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.js"></script>
 <script src="Projector.js"></script>
 <script src="CanvasRenderer.js"></script>
@@ -93,10 +103,10 @@
     function init() {
         container = document.getElementById( 'particles' );
         document.getElementById( 'main' ).appendChild(container);
-        camera = new THREE.PerspectiveCamera( 85, window.innerWidth / window.innerHeight, 1, 10000 );
-        camera.position.z = 450;
-        camera.position.y = 500;
-        camera.position.x = 500;
+        camera = new THREE.PerspectiveCamera( 65, window.innerWidth / window.innerHeight, 1, 10000 );
+        camera.position.z = 200;
+        camera.position.y = 425;
+        camera.position.x = 800;
         scene = new THREE.Scene();
         particles = new Array();
         var PI2 = Math.PI * 2;
@@ -105,7 +115,6 @@
             program: function ( context ) {
                 context.beginPath();
                 context.arc( 0, 0, 0.5, 0, PI2, true );
-                context.scale(3, 3);
                 context.fill();
             }
         } );
@@ -115,6 +124,7 @@
                 particle = particles[ i ++ ] = new THREE.Sprite( material );
                 particle.position.x = ix * SEPARATION - ( ( AMOUNTX * SEPARATION ) / 2 );
                 particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) / 2 );
+                particle.scale.x = particle.scale.y = 2;
                 scene.add( particle );
             }
         }

@@ -45,6 +45,10 @@ body {
 //  }
 //}
 
+.container {
+  padding-right: 60px;
+}
+
 
 canvas {
   height: 100% !important;
@@ -63,7 +67,7 @@ canvas {
   height:100%;
   position: fixed;
   z-index: 1009;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 1);
   right: 0;
   text-align: center;
   padding: 23px 0;
@@ -91,7 +95,7 @@ canvas {
     div {
       width: 19px;
       height: 3px;
-      background-color: #fff;
+      background-color: #061927;
       margin: 4px auto;
     }
     div:first-child {
@@ -101,7 +105,7 @@ canvas {
     }
   }
   h1 {
-    color: #fff;
+    color: #061927;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 1px;
@@ -152,6 +156,7 @@ canvas {
   background-size: cover;
   position: relative;
   overflow: hidden;
+  padding-right: 60px;
   #particles {
     //background-color: #061927;
     background: linear-gradient(to right, #061927, #061927);
@@ -200,5 +205,6 @@ canvas {
   padding: 100px 0;
 }
 
-
-
+.footer {
+  padding: 50px 0;
+}
