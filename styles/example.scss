@@ -150,6 +150,29 @@ canvas {
   }
 }
 
+.after-animated {
+  display: inline-block;
+  position: absolute;
+  right: 20px;
+  div {
+    width: 19px;
+    height: 3px;
+    background-color: #061927;
+    margin: 4px auto;
+    transition: all .3s;
+  }
+  div:first-child {
+    width: 19px;
+    margin: 0;
+    transition: all .3s;
+  }
+  div:nth-child(2) {
+    width: 19px;
+    margin-left: 0;
+    transition: all .3s;
+  }
+}
+
 .main-menu {
   position: absolute;
   width: 100%;
@@ -214,17 +237,17 @@ canvas {
         margin: 0 auto;
       }
       .btn-brand {
-        background-color: $thentia-green;
-        border: 2px solid $thentia-green;
-        color: #fff;
+        background-color: #fff;
+        border: 2px solid #fff;
+        color: #061927;
         @include hover-state {
           text-decoration: none;
           cursor: pointer;
         }
       }
       .btn-light {
-        border: 2px solid $thentia-green;
-        color: $thentia-green;
+        border: 2px solid #fff;
+        color: #fff;
         @include hover-state {
           text-decoration: none;
           cursor: pointer;

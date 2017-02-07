@@ -93,6 +93,25 @@ canvas {
   transform: rotate(-45deg);
   margin-top: -14px !important; }
 
+.after-animated {
+  display: inline-block;
+  position: absolute;
+  right: 20px; }
+  .after-animated div {
+    width: 19px;
+    height: 3px;
+    background-color: #061927;
+    margin: 4px auto;
+    transition: all .3s; }
+  .after-animated div:first-child {
+    width: 19px;
+    margin: 0;
+    transition: all .3s; }
+  .after-animated div:nth-child(2) {
+    width: 19px;
+    margin-left: 0;
+    transition: all .3s; }
+
 .main-menu {
   position: absolute;
   width: 100%;
@@ -149,15 +168,15 @@ canvas {
         max-width: 500px;
         margin: 0 auto; }
       .main-title #particles .main-title-text .btn-brand {
-        background-color: #4cb79c;
-        border: 2px solid #4cb79c;
-        color: #fff; }
+        background-color: #fff;
+        border: 2px solid #fff;
+        color: #061927; }
         .main-title #particles .main-title-text .btn-brand:hover, .main-title #particles .main-title-text .btn-brand:active, .main-title #particles .main-title-text .btn-brand:focus {
           text-decoration: none;
           cursor: pointer; }
       .main-title #particles .main-title-text .btn-light {
-        border: 2px solid #4cb79c;
-        color: #4cb79c; }
+        border: 2px solid #fff;
+        color: #fff; }
         .main-title #particles .main-title-text .btn-light:hover, .main-title #particles .main-title-text .btn-light:active, .main-title #particles .main-title-text .btn-light:focus {
           text-decoration: none;
           cursor: pointer; }
