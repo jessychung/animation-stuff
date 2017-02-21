@@ -3,7 +3,7 @@ $regular: 400;
 $medium: 500;
 $bold: 700;
 
-$thentia-blue: #004f76;
+$thentia-blue: #006ea2;
 $thentia-green: #4cb79c;
 $thentia-yellow: #eeaf30;
 $thentia-red: #ea573d;
@@ -58,8 +58,20 @@ canvas {
 .button {
   padding: 12px 25px;
   margin: 0 7px;
-  font-size: 17px;
+  font-size: 14px;
   font-weight: $regular;
+}
+
+.loading {
+  position: fixed;
+  right: 0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  overflow: hidden;
+  background-color: #fff;
+  text-align: center;
 }
 
 .side-menu {
@@ -71,6 +83,7 @@ canvas {
   right: 0;
   padding: 23px 0;
   transition: all .15s;
+  box-shadow: -5px 0px 25px -1px rgba(9, 46, 74, 0.1);
   @include hover-state {
     transition: all .15s;
     background-color: rgba(255, 255, 255, 1);
@@ -221,8 +234,8 @@ canvas {
   overflow: hidden;
   padding-right: 60px;
   #particles {
-    //background-color: #061927;
-    background: linear-gradient(to right, #061927, #061927);
+    background: linear-gradient(to bottom, #004969, #052635);
+    //background: linear-gradient(to right, #061927, #061927);
     height: 100%;
     .main-title-text {
       position: absolute;
@@ -238,6 +251,7 @@ canvas {
         margin-top: 0px;
         pointer-events: none;
         margin-bottom: 50px;
+        display: block;
       }
       p {
         font-family: "roboto",sans-serif;
@@ -249,16 +263,20 @@ canvas {
       }
       .btn-brand {
         background-color: #fff;
-        border: 2px solid #fff;
+        border: 1px solid rgba(255, 255, 255, 0.38);
         color: #061927;
+        border-radius: 3px;
+        display: inline-block;
         @include hover-state {
           text-decoration: none;
           cursor: pointer;
         }
       }
       .btn-light {
-        border: 2px solid #fff;
+        border: 1px solid rgba(255, 255, 255, 0.38);
         color: #fff;
+        border-radius: 3px;
+        display: inline-block;
         @include hover-state {
           text-decoration: none;
           cursor: pointer;
@@ -273,12 +291,30 @@ canvas {
   //background-color: $thentia-green;
   background: linear-gradient(to right, $thentia-green, $thentia-blue);
   color: #fff;
-  padding: 100px 0;
+  padding: 150px 0;
+  h1 {
+    font-family: "mr-eaves-modern",sans-serif;
+    font-size: 40px;
+  }
   p {
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: $light;
+  }
+}
+
+.third {
+  background-color: #fff;
+  padding: 50px 0;
+  .wbox {
+    background-color: #fff;
+    box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
+    padding: 50px;
+    margin-top: -100px;
+    border-radius: 3px;
   }
 }
 
 .footer {
   padding: 50px 0;
+  background-color: #f2f2f2;
 }
