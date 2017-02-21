@@ -1,21 +1,51 @@
 //jquery
 
 var sideMenu = $('.side-menu');
+var exitMenu = $('.bars');
 
-sideMenu.click(function () {
-    $(this).toggleClass('full-screen-menu', 3000);
-    $('.animated-bars div').toggleClass('cross');
+// sideMenu.click(function () {
+//     if(!$('.bars div').hasClass('cross') && !sideMenu.hasClass('full-screen-menu')) {
+//
+//         $('.bars div').toggleClass('cross');
+//         $(this).addClass('full-screen-menu', 3000);
+//     } else {
+//         $(this).removeClass('full-screen-menu', 3000);
+//     }
+// });
+
+sideMenu.on('click', function () {
+    if(!exitMenu.find('div').hasClass('cross')) {
+        $(this).addClass('full-screen-menu', 3000);
+        $(this).find('.bars div').toggleClass('cross');
+        console.log('menu bar clicked');
+    }
 });
 
+exitMenu.on('click', function (e) {
+
+    e.stopPropagation();
+
+    if($(this).find('div').hasClass('cross')) {
+        $(this).find('div').toggleClass('cross');
+        $(this).parents('.side-menu').removeClass('full-screen-menu', 3000);
+        console.log('close menu');
+    } else {
+        $(this).parents('.side-menu').addClass('full-screen-menu', 3000);
+        $(this).find('div').toggleClass('cross');
+        console.log('icon clicked');
+    }
+
+});
+
+// exitMenu.click(function () {
+//     console.log(sideMenu.hasClass('full-screen-menu'));
+//     if(sideMenu.hasClass('full-screen-menu')) {
+//         sideMenu.removeClass('full-screen-menu', 3000)
+//         console.log(sideMenu)
+//     }
+// });
 
 
-sideMenu
-    .mouseenter(function () {
-        $(this).find('.animated-bars').addClass('after-animated animated-bars');
-    })
-    .mouseleave(function () {
-        $(this).find('.after-animated').toggleClass('animated-bars');
-    });
 
 
 //Animation bg
