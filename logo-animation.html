@@ -54,7 +54,7 @@
                         $this.addClass('fadeInDown').css('opacity', 1);
                     }, time);
                     time += 100;
-                });
+                }).removeClass('fadeInDown');
             }
 
             setInterval(loop, 2000)
