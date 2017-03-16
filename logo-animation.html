@@ -47,13 +47,19 @@
 
             var time = 100;
 
-            var loop = $($('.vl-logo-piece').get().reverse()).each(function () {
-                var $this = $(this);
-                setTimeout(function () {
-                    $this.addClass('fadeInDown').css('opacity', 1);
-                }, time);
-                time += 100;
-            });
+            var loop = function () {
+                $($('.vl-logo-piece').get().reverse()).each(function () {
+                    var $this = $(this);
+                    setTimeout(function () {
+                        $this.addClass('fadeInDown').css('opacity', 1);
+                    }, time);
+                    time += 100;
+                });
+            }
+
+            setInterval(loop, 2000)
+
+
             
         });
 
