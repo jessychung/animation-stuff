@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vectorleap Animation</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <style>
+        .vl-logo-animation{
+            position: relative;
+        }
+        .vl-logo-piece {
+            position: absolute;
+            left:0;
+            top:0;
+            opacity: 0;
+        }
+        .vl-ring {
+            position: absolute;
+            left:0;
+            top:0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div style="position: relative">
+
+    <object type="image/svg+xml" data="images/vl_ring_animated.svg" class="vl-ring" width="70px"></object>
+
+    <div class="vl-logo-animation">
+        <img class="vl-logo-piece animated" src="images/vl_five-01.svg" width="50px">
+        <img class="vl-logo-piece animated" src="images/vl_four-01.svg" width="50px">
+        <img class="vl-logo-piece animated" src="images/vl_three-01.svg" width="50px">
+        <img class="vl-logo-piece animated" src="images/vl_two-01.svg" width="50px">
+        <img class="vl-logo-piece animated" src="images/vl_one-01.svg" width="50px">
+    </div>
+
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.0/vivus.min.js"></script>
+    <script>
+
+        $(function () {
+
+            var time = 100;
+
+            var loop = $($('.vl-logo-piece').get().reverse()).each(function () {
+                var $this = $(this);
+                setTimeout(function () {
+                    $this.addClass('fadeInDown').css('opacity', 1);
+                }, time);
+                time += 100;
+            });
+            
+        });
+
+    </script>
+</body>
+</html>
