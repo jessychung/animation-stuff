@@ -5,38 +5,67 @@
     <title>Vectorleap Animation</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <style>
-        .vl-logo-animation{
-            position: relative;
-        }
+
         .vl-logo-piece {
             position: absolute;
-            left:0;
-            top:0;
+            left: 11px;
+            top: 9px;
             opacity: 0;
+            transition: all .5s;
+        }
+        .fadeInDown {
+            transition: all .5s;
         }
         .vl-ring {
-            position: absolute;
-            left:0;
-            top:0;
+
+        }
+        .vl-loading-container {
+            position: relative;
+        }
+        .vl-loading {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -moz-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
         }
     </style>
 </head>
 
 <body>
 
-<div style="position: relative">
+<div class="vl-loading">
+    <div class="vl-loading-container">
+        <div class="vl-ring">
+            <object type="image/svg+xml" data="images/vl_ring_animated.svg"  width="70px"></object>
+        </div>
 
-    <object type="image/svg+xml" data="images/vl_ring_animated.svg" class="vl-ring" width="70px"></object>
+        <div class="vl-logo-animation">
+            <img class="vl-logo-piece animated" src="images/vl_five-01.svg" width="50px">
+            <img class="vl-logo-piece animated" src="images/vl_four-01.svg" width="50px">
+            <img class="vl-logo-piece animated" src="images/vl_three-01.svg" width="50px">
+            <img class="vl-logo-piece animated" src="images/vl_two-01.svg" width="50px">
+            <img class="vl-logo-piece animated" src="images/vl_one-01.svg" width="50px">
+        </div>
 
-    <div class="vl-logo-animation">
-        <img class="vl-logo-piece animated" src="images/vl_five-01.svg" width="50px">
-        <img class="vl-logo-piece animated" src="images/vl_four-01.svg" width="50px">
-        <img class="vl-logo-piece animated" src="images/vl_three-01.svg" width="50px">
-        <img class="vl-logo-piece animated" src="images/vl_two-01.svg" width="50px">
-        <img class="vl-logo-piece animated" src="images/vl_one-01.svg" width="50px">
     </div>
-
 </div>
+
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -44,23 +73,42 @@
     <script>
 
         $(function () {
-
             var time = 100;
 
             var loop = function () {
                 $($('.vl-logo-piece').get().reverse()).each(function () {
                     var $this = $(this);
+//                    if($this.hasClass('fadeInDown')) {
+//                        $this.removeClass('fadeInDown');
+//                    }
                     setTimeout(function () {
                         $this.addClass('fadeInDown').css('opacity', 1);
-                    }, time);
+                    },time);
                     time += 100;
-                }).removeClass('fadeInDown');
-            }
+                });
+            };
 
-            setInterval(loop, 2000)
+            loop();
+
+//            $('.vl-logo-animation').find('img').delay( 3400 ).fadeOut();
+
+            setInterval(loop, 3400);
 
 
-            
+//            var time = 100;
+//
+//            var loop = function () {
+//                $($('.vl-logo-piece').get().reverse()).each(function () {
+//                    var $this = $(this);
+//                    setTimeout(function () {
+//                        $this.addClass('fadeInDown').css('opacity', 1);
+//                    }, time);
+//                    time += 100;
+//                }).removeClass('fadeInDown');
+//            };
+//
+//            setInterval(loop, 4000)
+
         });
 
     </script>
