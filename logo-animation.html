@@ -69,61 +69,33 @@
         $(function () {
 
 
-            var time = 100;
+            var loop = function() {
 
-//            var loop = function () {
-//                $($('.vl-logo-piece').get().reverse()).each(function () {
-//                    var $this = $(this);
-//                    if($this.hasClass('fadeInDown')) {
-//                        setTimeout(function () {
-//                            $this.removeClass('fadeInDown').css('opacity', 0);
-//                        },time);
-//                        time += 100;
-//                    } else  {
-//                        setTimeout(function () {
-//                            $this.addClass('fadeInDown').css('opacity', 1);
-//                        },time);
-//                        time += 100;
-//                    }
-//
-//                });
-//            };
+                var time = 100;
 
-
-//            $($('.vl-logo-piece').get().reverse()).each(function () {
-//                var $this = $(this);
-//                $this.addClass('fadeInDown').css('opacity', 1);
-//            });
-
-            $($('.vl-logo-piece').get().reverse()).each(function( i ) {
-                var $this = $(this);
-                setTimeout(function () {
-                    $this.addClass('fadeInDown');
-                },time += 100);
-            });
-
-            var bloop = function () {
-                $('.vl-logo-piece').each(function( i ) {
+                $($('.vl-logo-piece').get().reverse()).each(function( i ) {
                     var $this = $(this);
-
-                    $this.removeClass('fadeInDown').fadeOut();
-
+                    setTimeout(function () {
+                        $this.addClass('fadeInDown');
+                    }, time += 100);
                 });
             };
 
+            loop();
 
+            var bloop = function () {
+                $('.vl-logo-piece').removeClass('fadeInDown');
+                    loop();
+            };
 
-
-            $('.vl-logo-piece').on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
+            $('.vl-logo-piece:first-of-type').on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
+                console.log('sefsf');
                 setTimeout(function () {
                     bloop();
-                    console.log('testststetset')
-                },1700);
-
+                    console.log('end loop')
+                },1400);
             });
 
-
-//            setInterval(loop, 600);
 
 
         });
