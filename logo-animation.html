@@ -68,8 +68,10 @@
 
         $(function () {
 
+            var vectorleapAnimation = {};
 
-            var loop = function() {
+
+            vectorleapAnimation.loop = function() {
 
                 var time = 100;
 
@@ -81,19 +83,19 @@
                 });
             };
 
-            loop();
+            vectorleapAnimation.loop();
 
-            var bloop = function () {
+            vectorleapAnimation.stopLoop = function () {
                 $('.vl-logo-piece').removeClass('fadeInDown');
-                    loop();
+                    vectorleapAnimation.loop();
             };
 
             $('.vl-logo-piece:first-of-type').on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
                 console.log('sefsf');
                 setTimeout(function () {
-                    bloop();
+                    vectorleapAnimation.stopLoop();
                     console.log('end loop')
-                },1400);
+                },1500);
             });
 
 
