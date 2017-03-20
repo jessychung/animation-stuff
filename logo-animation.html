@@ -10,12 +10,8 @@
             position: absolute;
             left: 11px;
             top: 9px;
-            opacity: 0;
-            transition: all .5s;
         }
-        .fadeInDown {
-            transition: all .5s;
-        }
+
         .vl-ring {
 
         }
@@ -71,46 +67,64 @@
     <script>
 
         $(function () {
+
+
             var time = 100;
 
-            var loop = function () {
-                $($('.vl-logo-piece').get().reverse()).each(function () {
+//            var loop = function () {
+//                $($('.vl-logo-piece').get().reverse()).each(function () {
+//                    var $this = $(this);
+//                    if($this.hasClass('fadeInDown')) {
+//                        setTimeout(function () {
+//                            $this.removeClass('fadeInDown').css('opacity', 0);
+//                        },time);
+//                        time += 100;
+//                    } else  {
+//                        setTimeout(function () {
+//                            $this.addClass('fadeInDown').css('opacity', 1);
+//                        },time);
+//                        time += 100;
+//                    }
+//
+//                });
+//            };
+
+
+//            $($('.vl-logo-piece').get().reverse()).each(function () {
+//                var $this = $(this);
+//                $this.addClass('fadeInDown').css('opacity', 1);
+//            });
+
+            $($('.vl-logo-piece').get().reverse()).each(function( i ) {
+                var $this = $(this);
+                setTimeout(function () {
+                    $this.addClass('fadeInDown');
+                },time += 100);
+            });
+
+            var bloop = function () {
+                $('.vl-logo-piece').each(function( i ) {
                     var $this = $(this);
-                    if($this.hasClass('fadeInDown')) {
-                        setTimeout(function () {
-                            $this.removeClass('fadeInDown').css('opacity', 0);
-                        },time);
-                        time += 100;
-                    } else  {
-                        setTimeout(function () {
-                            $this.addClass('fadeInDown').css('opacity', 1);
-                        },time);
-                        time += 100;
-                    }
+
+                    $this.removeClass('fadeInDown').fadeOut();
 
                 });
             };
 
-            loop();
-
-//            $('.vl-logo-animation').find('img').delay( 3400 ).fadeOut();
-
-            setInterval(loop, 3600);
 
 
-//            var time = 100;
-//
-//            var loop = function () {
-//                $($('.vl-logo-piece').get().reverse()).each(function () {
-//                    var $this = $(this);
-//                    setTimeout(function () {
-//                        $this.addClass('fadeInDown').css('opacity', 1);
-//                    }, time);
-//                    time += 100;
-//                }).removeClass('fadeInDown');
-//            };
-//
-//            setInterval(loop, 4000)
+
+            $('.vl-logo-piece').on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
+                setTimeout(function () {
+                    bloop();
+                    console.log('testststetset')
+                },1700);
+
+            });
+
+
+//            setInterval(loop, 600);
+
 
         });
 
